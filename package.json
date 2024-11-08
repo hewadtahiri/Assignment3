@@ -1,0 +1,15 @@
+{
+    "name": "assignment3",
+    "version": "1.0.0",
+    "description": "My to-do list website.",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "author": "Hewad Tahiri",
+    "license": "ISC",
+    "dependencies": {
+        "ejs": "^3.1.10",
+        "express": "^4.21.1"
+    }
+}
