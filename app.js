@@ -3,10 +3,10 @@ const path = require("path");
 const mongoose = require("mongoose");
 const routes = require("./Routes/index");
 const app = express();
-const uri = "mongodb+srv://hewadtahiri:ukKr8O1raqFBVDEM@assignment3.5mb3v.mongodb.net/assignment3?retryWrites=true&w=majority";
+const config = require("./config");
 
 // Connects to MongoDB cluster.
-mongoose.connect(uri, {
+mongoose.connect(config.uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
