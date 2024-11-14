@@ -6,10 +6,7 @@ const app = express();
 const config = require("./config");
 
 // Connects to MongoDB cluster.
-mongoose.connect(config.uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(config.uri)
   .then(() => console.log("Connected to MongoDB."))
   .catch(err => console.error(`MongoDB Connection Error: ${err}.`));
 
