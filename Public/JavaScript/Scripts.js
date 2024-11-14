@@ -38,6 +38,13 @@ function show(id, title, description, due_date) {
   document.getElementById("due_date").value = due_date ? due_date.split("T")[0] : "";
   document.getElementById("form").action = `/tasks/edit/${id}`;
   document.getElementById("edit").style.display = "block";
+
+  // Sets the minimum date for due_date to today's date.
+  const input = document.getElementById("due_date");
+  if (input) {
+    const today = new Date().toISOString().split("T")[0];
+    input.setAttribute("min", today);
+  }
 }
 
 // Hides the edit tasks section.
