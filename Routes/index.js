@@ -2,16 +2,20 @@ const express = require("express");
 const router = express.Router();
 const task = require("../Models/Task");
 
-// Displays home page and active tasks.
+// Displays home page and active tasks, sorted by due date.
 router.get("/", async (req, res) => {
   try {
-    const tasks = await task.find({});
+    const tasks = await task
+      .find({})
+      .sort({ due_date: 1 })
+      .collation({ locale: "en", strength: 2 });
     res.render("Layout", { title: "Home", body: "Home", tasks, edit: null });
   } catch (error) {
     console.error(`Display Error: ${error}`);
     res.status(500).send("Internal Server Error");
   }
 });
+
 
 // Creates a new task.
 router.post("/tasks", async (req, res) => {
