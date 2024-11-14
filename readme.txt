@@ -2,7 +2,7 @@ INFR 3120U - Assignment 3
 
 Home.ejs
 • Banner Image
-  ◦ Olivie Straus (https://unsplash.com/photos/a-clipboard-with-a-to-do-list-on-it-next-to-a-pair-of-glasses-MHO7J3TAwSY)
+  ◦ Sweet Life (https://unsplash.com/photos/a-woman-sitting-at-a-table-with-a-laptop-4NRgZmVb7bc)
 
 Stylesheet.css
 • Bootstrap v5.2.3 (https://getbootstrap.com)
