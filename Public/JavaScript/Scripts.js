@@ -26,8 +26,8 @@ window.addEventListener("DOMContentLoaded", event => {
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("due_date");
   if (input) {
-    const input = new Date().toISOString().split("T")[0];
-    dueDateInput.setAttribute("min", today);
+    const today = new Date().toISOString().split("T")[0];
+    input.setAttribute("min", today);
   }
 });
 
