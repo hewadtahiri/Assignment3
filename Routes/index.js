@@ -6,7 +6,7 @@ const task = require("../Models/Task");
 router.get("/", async (req, res) => {
   try {
     const tasks = await task.find({});
-    res.render("Layout", { title: "Home", body: "Home", tasks, edit_task: null });
+    res.render("Layout", { title: "Home", body: "Home", tasks, edit: null });
   } catch (error) {
     console.error(`Display Error: ${error}`);
     res.status(500).send("Internal Server Error");
@@ -29,10 +29,10 @@ router.post("/tasks", async (req, res) => {
 // Edits an existing task.
 router.get("/tasks/edit/:id", async (req, res) => {
   try {
-    const edit_task = await task.findById(req.params.id);
-    if (edit_task) {
+    const edit = await task.findById(req.params.id);
+    if (edit) {
       const tasks = await task.find({});
-      res.render("Layout", { title: "Home", body: "Home", tasks, edit_task });
+      res.render("Layout", { title: "Home", body: "Home", tasks, edit });
     } else {
       res.status(404).send("Task Not Found");
     }
