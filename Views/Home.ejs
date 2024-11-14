@@ -79,7 +79,7 @@
             </div>
             <div class="mb-3">
               <label for="due_date" class="form-label">Due Date</label>
-              <input type="date" id="due_date" name="due_date" class="form-control" value="<%= edit.due_date %>">
+              <input type="date" id="due_date" name="due_date" class="form-control" value="<%= edit.due_date %>" min="<%= new Date().toISOString().split('T')[0] %>">
             </div>
             <!-- Saves Edits -->
             <button type="submit" class="btn btn-success">Save</button>
