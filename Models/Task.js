@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // Defines the schema for a task.
-const taskSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -25,4 +25,4 @@ const taskSchema = new mongoose.Schema({
 });
 
 // Creates and exports the Task model based on the schema.
-module.exports = mongoose.model("Task", taskSchema);
+module.exports = mongoose.model("Task", schema);

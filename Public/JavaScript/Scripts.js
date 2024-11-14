@@ -1,21 +1,21 @@
-window.addEventListener('DOMContentLoaded', event => {
+window.addEventListener("DOMContentLoaded", event => {
   // Activates Bootstrap scrollspy on the main nav element.
-  const mainNav = document.body.querySelector('#mainNav');
+  const mainNav = document.body.querySelector("#mainNav");
   if (mainNav) {
     new bootstrap.ScrollSpy(document.body, {
-      target: '#mainNav',
+      target: "#mainNav",
       offset: 74,
     });
   }
 
   // Collapses responsive navbar when toggler is visible.
-  const navbarToggler = document.body.querySelector('.navbar-toggler');
+  const navbarToggler = document.body.querySelector(".navbar-toggler");
   const responsiveNavItems = [].slice.call(
-    document.querySelectorAll('#navbarResponsive .nav-link')
+    document.querySelectorAll("#navbarResponsive .nav-link")
   );
   responsiveNavItems.map(function (responsiveNavItem) {
-    responsiveNavItem.addEventListener('click', () => {
-      if (window.getComputedStyle(navbarToggler).display !== 'none') {
+    responsiveNavItem.addEventListener("click", () => {
+      if (window.getComputedStyle(navbarToggler).display !== "none") {
         navbarToggler.click();
       }
     });
@@ -23,15 +23,15 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 // Displays the edit tasks section.
-function show_edit(id, title, description, due_date) {
+function show(id, title, description, due_date) {
   document.getElementById("title").value = title;
   document.getElementById("description").value = description;
-  document.getElementById("due_date").value = due_date ? due_date.split('T')[0] : "";
+  document.getElementById("due_date").value = due_date ? due_date.split("T")[0] : "";
   document.getElementById("form").action = `/tasks/edit/${id}`;
   document.getElementById("edit").style.display = "block";
 }
 
 // Hides the edit tasks section.
-function hide_edit() {
+function hide() {
   document.getElementById("edit").style.display = "none";
 }

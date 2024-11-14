@@ -43,7 +43,7 @@
     </table>
     <!-- Create Tasks -->
     <div class="mt-5">
-      <h2>Create a Task</h2>
+      <h2>Add a Task</h2>
       <form action="/tasks" method="POST">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
@@ -57,30 +57,30 @@
           <label for="due_date" class="form-label">Due Date</label>
           <input type="date" id="due_date" name="due_date" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>
     <!-- Edit Tasks -->
-    <% if (edit_task) { %>
+    <% if (edit) { %>
       <div id="edit" class="mt-5">
         <h2>Edit Task</h2>
-        <form id="form" action="/tasks/edit/<%= edit_task.id %>" method="POST">
+        <form id="form" action="/tasks/edit/<%= edit.id %>" method="POST">
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" id="title" name="title" class="form-control" value="<%= edit_task.title %>">
+            <input type="text" id="title" name="title" class="form-control" value="<%= edit.title %>">
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input type="text" id="description" name="description" class="form-control" value="<%= edit_task.description %>">
+            <input type="text" id="description" name="description" class="form-control" value="<%= edit.description %>">
           </div>
           <div class="mb-3">
             <label for="due_date" class="form-label">Due Date</label>
-            <input type="date" id="due_date" name="due_date" class="form-control" value="<%= edit_task.due_date %>">
+            <input type="date" id="due_date" name="due_date" class="form-control" value="<%= edit.due_date %>">
           </div>
           <!-- Saves Edits -->
           <button type="submit" class="btn btn-success">Save</button>
           <!-- Cancels Edits -->
-          <button type="button" class="btn btn-secondary" onclick="hide_edit()">Cancel</button>
+          <button type="button" class="btn btn-secondary" onclick="hide()">Cancel</button>
         </form>
       </div>
     <% } else { %>
