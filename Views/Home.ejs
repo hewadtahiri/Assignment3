@@ -14,7 +14,7 @@
 
 <!-- Tasks -->
 <section id="tasks">
-  <div class="container px-12">
+  <div class="container px-5">
     <!-- Display Tasks -->
     <h1>To-Do List</h1>
     <table class="table">
@@ -33,11 +33,13 @@
             <td><%= task.due_date ? new Date(task.due_date).toLocaleDateString() : "No Due Date" %></td>
             <td>
               <a href="/tasks/edit/<%= task._id %>" class="btn btn-primary btn-sm">Edit</a>
-              <a href="/tasks/delete/<%= task._id %>" class="btn btn-danger btn-sm">Delete</a>
+              <form action="/tasks/delete/<%= task._id %>" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              </form>
             </td>
           </tr>
         <% }) %>
-      </tbody>
+      </tbody>      
     </table>
     <!-- Create Tasks -->
     <div class="mt-5">
