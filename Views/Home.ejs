@@ -16,27 +16,24 @@
 <section id="tasks">
   <div class="container px-5">
     <!-- Display Tasks -->
-    <h1>Reservations</h1>
+    <h1>To-Do List</h1>
     <table class="table">
       <thead>
         <tr>
-          <th>Reservation ID</th>
-          <th>Customer Name</th>
-          <th>Car Model</th>
-          <th>Reservation Date</th>
-          <th>Actions</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Due Date</th>
         </tr>
       </thead>
       <tbody>
-        <% reservations.forEach(reservation => { %>
+        <% tasks.forEach(task => { %>
           <tr>
-            <td><%= reservation.id %></td>
-            <td><%= reservation.customer_name %></td>
-            <td><%= reservation.car_model %></td>
-            <td><%= reservation.reservation_date %></td>
+            <td><%= task.title %></td>
+            <td><%= task.description %></td>
+            <td><%= task.due_date ? new Date(task.due_date).toLocaleDateString() : "No Due Date" %></td>
             <td>
-              <a href="/reservations/edit/<%= reservation.id %>" class="btn btn-primary btn-sm">Edit</a>
-              <a href="/reservations/delete/<%= reservation.id %>" class="btn btn-danger btn-sm">Delete</a>
+              <a href="/tasks/edit/<%= task._id %>" class="btn btn-primary btn-sm">Edit</a>
+              <a href="/tasks/delete/<%= task._id %>" class="btn btn-danger btn-sm">Delete</a>
             </td>
           </tr>
         <% }) %>
@@ -44,48 +41,48 @@
     </table>
     <!-- Create Tasks -->
     <div class="mt-5">
-      <h2>Create a Reservation</h2>
-      <form action="/reservations" method="POST">
+      <h2>Create a Task</h2>
+      <form action="/tasks" method="POST">
         <div class="mb-3">
-          <label for="customer_name" class="form-label">Customer Name</label>
-          <input type="text" id="customer_name" name="customer_name" class="form-control">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" id="title" name="title" class="form-control">
         </div>
         <div class="mb-3">
-          <label for="car_model" class="form-label">Car Model</label>
-          <input type="text" id="car_model" name="car_model" class="form-control">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" id="description" name="description" class="form-control">
         </div>
         <div class="mb-3">
-          <label for="reservation_date" class="form-label">Reservation Date</label>
-          <input type="date" id="reservation_date" name="reservation_date" class="form-control">
+          <label for="due_date" class="form-label">Due Date</label>
+          <input type="date" id="due_date" name="due_date" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">Create Reservation</button>
+        <button type="submit" class="btn btn-primary">Create Task</button>
       </form>
     </div>
     <!-- Edit Tasks -->
-    <% if (editReservation) { %>
-      <div id="editReservationSection" class="mt-5">
-        <h2>Edit Reservation</h2>
-        <form id="editForm" action="/reservations/edit/<%= editReservation.id %>" method="POST">
+    <% if (edit_task) { %>
+      <div id="edit" class="mt-5">
+        <h2>Edit Task</h2>
+        <form id="form" action="/tasks/edit/<%= edit_task.id %>" method="POST">
           <div class="mb-3">
-            <label for="customer_name" class="form-label">Customer Name</label>
-            <input type="text" id="customer_name" name="customer_name" class="form-control" value="<%= editReservation.customer_name %>">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" id="title" name="title" class="form-control" value="<%= edit_task.title %>">
           </div>
           <div class="mb-3">
-            <label for="car_model" class="form-label">Car Model</label>
-            <input type="text" id="car_model" name="car_model" class="form-control" value="<%= editReservation.car_model %>">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" id="description" name="description" class="form-control" value="<%= edit_task.description %>">
           </div>
           <div class="mb-3">
-            <label for="reservation_date" class="form-label">Reservation Date</label>
-            <input type="date" id="reservation_date" name="reservation_date" class="form-control" value="<%= editReservation.reservation_date %>">
+            <label for="due_date" class="form-label">Due Date</label>
+            <input type="date" id="due_date" name="due_date" class="form-control" value="<%= edit_task.due_date %>">
           </div>
           <!-- Saves Edits -->
-          <button type="submit" class="btn btn-success">Save Changes</button>
+          <button type="submit" class="btn btn-success">Save</button>
           <!-- Cancels Edits -->
-          <button type="button" class="btn btn-secondary" onclick="hideEditSection()">Cancel</button>
+          <button type="button" class="btn btn-secondary" onclick="hide_edit()">Cancel</button>
         </form>
       </div>
     <% } else { %>
-        <div id="editReservationSection" style="display: none;"></div>
+        <div id="edit" style="display: none;"></div>
     <% } %>
   </div>
 </section>

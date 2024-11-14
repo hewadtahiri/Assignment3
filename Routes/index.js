@@ -16,8 +16,8 @@ router.get("/", async (req, res) => {
 // Creates a new task.
 router.post("/tasks", async (req, res) => {
   try {
-    const { name, description, due_date } = req.body;
-    const new_task = new task({ name, description, due_date });
+    const { title, description, due_date } = req.body;
+    const new_task = new task({ title, description, due_date });
     await new_task.save();
     res.redirect("/#tasks");
   } catch (error) {
@@ -44,8 +44,8 @@ router.get("/tasks/edit/:id", async (req, res) => {
 // Updates an existing task.
 router.post("/tasks/edit/:id", async (req, res) => {
   try {
-    const { name, description, due_date } = req.body;
-    await task.findByIdAndUpdate(req.params.id, { name, description, due_date });
+    const { title, description, due_date } = req.body;
+    await task.findByIdAndUpdate(req.params.id, { title, description, due_date });
     res.redirect("/#tasks");
   } catch (error) {
     console.error(`Error updating task: ${error}.`);
