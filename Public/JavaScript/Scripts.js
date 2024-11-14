@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", event => {
   });
 });
 
-// Sets the minimum date for due_date to today's date.
+// Sets the minimum date for due_date input to today’s date.
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("due_date");
   if (input) {
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Displays the edit tasks section.
+// Displays the edit tasks section and applies date restriction
 function show(id, title, description, due_date) {
   document.getElementById("title").value = title;
   document.getElementById("description").value = description;
@@ -39,7 +39,7 @@ function show(id, title, description, due_date) {
   document.getElementById("form").action = `/tasks/edit/${id}`;
   document.getElementById("edit").style.display = "block";
 
-  // Sets the minimum date for due_date to today's date.
+  // Sets the minimum date for due_date input to today’s date.
   const input = document.getElementById("due_date");
   if (input) {
     const today = new Date().toISOString().split("T")[0];
