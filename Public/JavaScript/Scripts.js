@@ -22,15 +22,6 @@ window.addEventListener("DOMContentLoaded", event => {
   });
 });
 
-// Sets the minimum date for due_date input to today’s date.
-document.addEventListener("DOMContentLoaded", () => {
-  const input = document.getElementById("due_date");
-  if (input) {
-    const today = new Date().toISOString().split("T")[0];
-    input.setAttribute("min", today);
-  }
-});
-
 // Displays the edit tasks section and applies date restriction
 function show(id, title, description, due_date) {
   document.getElementById("title").value = title;
