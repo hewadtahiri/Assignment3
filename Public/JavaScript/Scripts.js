@@ -22,6 +22,15 @@ window.addEventListener("DOMContentLoaded", event => {
   });
 });
 
+// Sets the minimum date for due_date to today's date.
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("due_date");
+  if (input) {
+    const input = new Date().toISOString().split("T")[0];
+    dueDateInput.setAttribute("min", today);
+  }
+});
+
 // Displays the edit tasks section.
 function show(id, title, description, due_date) {
   document.getElementById("title").value = title;
