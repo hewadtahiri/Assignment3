@@ -31,7 +31,7 @@ router.get("/tasks/edit/:id", async (req, res) => {
   try {
     const task = await task.findById(req.params.id);
     if (task) {
-      res.render("Layout", { title: "Edit Task", body: "editTask", task });
+      res.render("Layout", { title: "Edit Task", body: "edit_task", task });
     } else {
       res.status(404).send("Task Not Found");
     }
