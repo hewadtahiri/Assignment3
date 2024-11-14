@@ -44,6 +44,7 @@ function show(id, title, description, due_date) {
   if (input) {
     const today = new Date().toISOString().split("T")[0];
     input.setAttribute("min", today);
+    console.log("Min date set to:", today);
   }
 }
 
