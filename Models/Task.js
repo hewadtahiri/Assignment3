@@ -14,14 +14,6 @@ const schema = new mongoose.Schema({
   due_date: {
     type: Date,
   },
-  created_at: {
-    type: Date,
-    default: Date.now,
-  },
-  completed: {
-    type: Boolean,
-    default: false,
-  },
 });
 
 // Creates and exports the Task model based on the schema.
