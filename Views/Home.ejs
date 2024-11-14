@@ -1,163 +1,91 @@
-<header class="masthead" style="background-image: url('/Assets/Images/Background.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; color: #fff;">
-  <div class="container px-5">
-    <div class="row gx-5 align-items-center">
-      <div class="col-lg-6">
-        <!-- Mashead text and app badges-->
-        <div class="mb-5 mb-lg-0 text-center text-lg-start">
-          <h1 class="display-1 lh-1 mb-3">Showcase your app beautifully.</h1>
-          <p class="lead fw-normal text-muted mb-5">Launch your mobile app landing page faster with this free, open source theme from Start Bootstrap!</p>
-        </div>
+<!-- Banner -->
+<header class="masthead" style="background-image: url('/Assets/Images/Background.png'); background-size: cover; background-position: center;">
+  <div class="container d-flex px-5 justify-content-center">
+    <div class="col-lg-8 text-center">
+      <div class="p-3 mb-3 bg-white rounded shadow text-black">
+        <h1 class="display-1 mb-0">Simplify your productivity.</h1>
       </div>
-      <div class="col-lg-6">
-        <!-- Masthead device mockup feature-->
-        <div class="masthead-device-mockup">
-          <svg class="circle" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="circleGradient" gradientTransform="rotate(45)">
-                <stop class="gradient-start-color" offset="0%"></stop>
-                <stop class="gradient-end-color" offset="100%"></stop>
-              </linearGradient>
-            </defs>
-            <circle cx="50" cy="50" r="50"></circle></svg
-          ><svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83" xmlns="http://www.w3.org/2000/svg">
-            <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(120.42 -49.88) rotate(45)"></rect>
-            <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(-49.88 120.42) rotate(-45)"></rect></svg
-          ><svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
-          <div class="device-wrapper">
-            <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
-              <div class="screen bg-black">
-                <!-- PUT CONTENTS HERE:-->
-                <!-- * * This can be a video, image, or just about anything else.-->
-                <!-- * * Set the max width of your media to 100% and the height to-->
-                <!-- * * 100% like the demo example below.-->
-                <video muted="muted" autoplay="" loop="" style="max-width: 100%; height: 100%"><source src="/Assets/Video/MP4/demo-screen.mp4" type="video/mp4" /></video>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="p-3 bg-white rounded shadow text-black">
+        <p class="lead fw-normal mb-0">A minimalist to-do list platform designed to help you organize tasks, set priorities, and boost productivity with ease. Featuring an intuitive interface and customizable categories, it empowers you to stay on top of your daily goals and long-term projects. Keep your tasks in check and get more done with this simple solution for organized productivity.</p>
       </div>
     </div>
   </div>
 </header>
-<!-- App features section-->
-<section id="cars">
+
+<!-- Tasks -->
+<section id="tasks">
   <div class="container px-5">
-    <div class="row gx-5 align-items-center">
-      <div class="col-lg-8 order-lg-1 mb-5 mb-lg-0">
-        <div class="container-fluid px-5">
-          <div class="row gx-5">
-            <div class="col-md-6 mb-5">
-              <!-- Feature item-->
-              <div class="text-center">
-                <i class="bi-phone icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Audi R8</h3>
-                <p class="text-muted mb-0">Text</p>
-              </div>
-            </div>
-            <div class="col-md-6 mb-5">
-              <!-- Feature item-->
-              <div class="text-center">
-                <i class="bi-camera icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Dodge Demon</h3>
-                <p class="text-muted mb-0">Text</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-5 mb-md-0">
-              <!-- Feature item-->
-              <div class="text-center">
-                <i class="bi-gift icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Lamborghini Urus</h3>
-                <p class="text-muted mb-0">Text</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <!-- Feature item-->
-              <div class="text-center">
-                <i class="bi-patch-check icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Ferrari SF90</h3>
-                <p class="text-muted mb-0">Text</p>
-              </div>
-            </div>
-          </div>
+    <!-- Display Tasks -->
+    <h1>Reservations</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Reservation ID</th>
+          <th>Customer Name</th>
+          <th>Car Model</th>
+          <th>Reservation Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% reservations.forEach(reservation => { %>
+          <tr>
+            <td><%= reservation.id %></td>
+            <td><%= reservation.customer_name %></td>
+            <td><%= reservation.car_model %></td>
+            <td><%= reservation.reservation_date %></td>
+            <td>
+              <a href="/reservations/edit/<%= reservation.id %>" class="btn btn-primary btn-sm">Edit</a>
+              <a href="/reservations/delete/<%= reservation.id %>" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <!-- Create Tasks -->
+    <div class="mt-5">
+      <h2>Create a Reservation</h2>
+      <form action="/reservations" method="POST">
+        <div class="mb-3">
+          <label for="customer_name" class="form-label">Customer Name</label>
+          <input type="text" id="customer_name" name="customer_name" class="form-control">
         </div>
-      </div>
+        <div class="mb-3">
+          <label for="car_model" class="form-label">Car Model</label>
+          <input type="text" id="car_model" name="car_model" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="reservation_date" class="form-label">Reservation Date</label>
+          <input type="date" id="reservation_date" name="reservation_date" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Reservation</button>
+      </form>
     </div>
-  </div>
-</section>
-<!-- App features section-->
-<section id="reservations">
-  <div class="container px-5">
-    <div class="row gx-5 align-items-center">
-      <div class="col-lg-8 order-lg-1 mb-5 mb-lg-0">
-        <div class="container-fluid px-5">
-          <div class="row gx-5">
-            <div class="col-md-6 mb-5">
-              <!-- Feature item-->
-              <div class="text-center">
-                <i class="bi-phone icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Device Mockups</h3>
-                <p class="text-muted mb-0">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
-              </div>
-            </div>
-            <div class="col-md-6 mb-5">
-              <!-- Feature item-->
-              <div class="text-center">
-                <i class="bi-camera icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Flexible Use</h3>
-                <p class="text-muted mb-0">Put an image, video, animation, or anything else in the screen!</p>
-              </div>
-            </div>
+    <!-- Edit Tasks -->
+    <% if (editReservation) { %>
+      <div id="editReservationSection" class="mt-5">
+        <h2>Edit Reservation</h2>
+        <form id="editForm" action="/reservations/edit/<%= editReservation.id %>" method="POST">
+          <div class="mb-3">
+            <label for="customer_name" class="form-label">Customer Name</label>
+            <input type="text" id="customer_name" name="customer_name" class="form-control" value="<%= editReservation.customer_name %>">
           </div>
-          <div class="row">
-            <div class="col-md-6 mb-5 mb-md-0">
-              <!-- Feature item-->
-              <div class="text-center">
-                <i class="bi-gift icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Free to Use</h3>
-                <p class="text-muted mb-0">As always, this theme is free to download and use for any purpose!</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <!-- Feature item-->
-              <div class="text-center">
-                <i class="bi-patch-check icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Open Source</h3>
-                <p class="text-muted mb-0">Since this theme is MIT licensed, you can use it commercially!</p>
-              </div>
-            </div>
+          <div class="mb-3">
+            <label for="car_model" class="form-label">Car Model</label>
+            <input type="text" id="car_model" name="car_model" class="form-control" value="<%= editReservation.car_model %>">
           </div>
-        </div>
+          <div class="mb-3">
+            <label for="reservation_date" class="form-label">Reservation Date</label>
+            <input type="date" id="reservation_date" name="reservation_date" class="form-control" value="<%= editReservation.reservation_date %>">
+          </div>
+          <!-- Saves Edits -->
+          <button type="submit" class="btn btn-success">Save Changes</button>
+          <!-- Cancels Edits -->
+          <button type="button" class="btn btn-secondary" onclick="hideEditSection()">Cancel</button>
+        </form>
       </div>
-      <div class="col-lg-4 order-lg-0">
-        <!-- Features section device mockup-->
-        <div class="features-device-mockup">
-          <svg class="circle" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="circleGradient" gradientTransform="rotate(45)">
-                <stop class="gradient-start-color" offset="0%"></stop>
-                <stop class="gradient-end-color" offset="100%"></stop>
-              </linearGradient>
-            </defs>
-            <circle cx="50" cy="50" r="50"></circle></svg
-          ><svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83" xmlns="http://www.w3.org/2000/svg">
-            <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(120.42 -49.88) rotate(45)"></rect>
-            <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(-49.88 120.42) rotate(-45)"></rect></svg
-          ><svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
-          <div class="device-wrapper">
-            <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
-              <div class="screen bg-black">
-                <!-- PUT CONTENTS HERE:-->
-                <!-- * * This can be a video, image, or just about anything else.-->
-                <!-- * * Set the max width of your media to 100% and the height to-->
-                <!-- * * 100% like the demo example below.-->
-                <video muted="muted" autoplay="" loop="" style="max-width: 100%; height: 100%"><source src="/Assets/Images/demo-screen.mp4" type="video/mp4" /></video>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <% } else { %>
+        <div id="editReservationSection" style="display: none;"></div>
+    <% } %>
   </div>
 </section>

@@ -1,5 +1,9 @@
 INFR 3120U - Assignment 3
 
+Home.ejs
+• Banner Image
+  ◦ Olivie Straus (https://unsplash.com/photos/a-clipboard-with-a-to-do-list-on-it-next-to-a-pair-of-glasses-MHO7J3TAwSY)
+
 Stylesheet.css
 • Bootstrap v5.2.3 (https://getbootstrap.com)
   ◦ Copyright 2011-2022 The Bootstrap Authors
