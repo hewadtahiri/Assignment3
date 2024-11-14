@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const task = require("/Models/Task");
+const task = require("../Models/Task");
 
 // Displays home page and active tasks.
 router.get("/", async (req, res) => {
