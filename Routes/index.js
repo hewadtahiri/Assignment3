@@ -6,9 +6,9 @@ const task = require("../Models/Task");
 router.get("/", async (req, res) => {
   try {
     const tasks = await task.find({});
-    res.render("Layout", { title: "Home", body: "Home", tasks });
+    res.render("Layout", { title: "Home", body: "Home", tasks, edit_task: null });
   } catch (error) {
-    console.error(`Error fetching task: ${error}.`);
+    console.error(`Error fetching tasks: ${error}.`);
     res.status(500).send("Internal Server Error");
   }
 });
@@ -29,14 +29,15 @@ router.post("/tasks", async (req, res) => {
 // Edits an existing task.
 router.get("/tasks/edit/:id", async (req, res) => {
   try {
-    const task = await task.findById(req.params.id);
-    if (task) {
-      res.render("Layout", { title: "Edit Task", body: "edit_task", task });
+    const edit_task = await task.findById(req.params.id);
+    if (edit_task) {
+      const tasks = await task.find({});
+      res.render("Layout", { title: "Home", body: "Home", tasks, edit_task });
     } else {
       res.status(404).send("Task Not Found");
     }
   } catch (error) {
-    console.error(`Error editing task: ${error}.`);
+    console.error(`Error fetching task for edit: ${error}.`);
     res.status(500).send("Internal Server Error");
   }
 });
